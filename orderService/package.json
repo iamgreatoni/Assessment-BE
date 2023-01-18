@@ -1,0 +1,36 @@
+{
+  "name": "orderservice",
+  "version": "1.0.0",
+  "description": "This is the Microservice for the orderservice ",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamgreatoni/Assessment-BE.git"
+  },
+  "keywords": [
+    "orderservice",
+    "MS"
+  ],
+  "author": "John Oni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamgreatoni/Assessment-BE/issues"
+  },
+  "homepage": "https://github.com/iamgreatoni/Assessment-BE#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.4",
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
+  }
+}
