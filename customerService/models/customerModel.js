@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
-import { validateEmail } from '../config/validator';
+import validator from 'validator';
+// import { validateEmail } from '../config/validator';
 
-const customerSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
     {
         name: {
             type: String,
-            lowercase: true,
             required: true,
             trim: true
         },
@@ -15,13 +15,24 @@ const customerSchema = new mongoose.Schema(
             unique: true,
             trim: true,
             required: [true, 'email address is required'],
-            validate: [validateEmail, 'please fill a valid email address']
+            validate: [validator.isEmail, 'please provide a valid email']
         },
         password: {
             type: String,
             required: true,
             minlength: 10,
+            trim: true
+        },
+        passwordConfirm: {
+            type: String,
+            required: [true, 'Please confirm your password'],
             trim: true,
+            validate: {
+              validator: function(el) {
+                return el === this.password;
+              },
+              message: 'Passwords are not the same!'
+            }
         },
         dateCreated: {
             type: Date
@@ -33,6 +44,6 @@ const customerSchema = new mongoose.Schema(
     { timestamps: true } 
 )
 
-const Customer = mongoose.model('Order', customerSchema)
+const Customer = mongoose.model('Order', userSchema)
 
 export default Customer;
